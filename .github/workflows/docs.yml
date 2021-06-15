@@ -1,9 +1,11 @@
-name: Build w/ Hugo & deploy to GitHub Pages
+name: Build docs w/ Hugo & deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'docs/**'
 
 jobs:
   deploy:
@@ -15,7 +17,7 @@ jobs:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Build
-        run: bash build.sh
+        run: bash buildDocs.sh
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
